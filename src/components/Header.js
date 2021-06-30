@@ -1,10 +1,22 @@
 import { AiOutlineMenu } from 'react-icons/ai';
+import {useAuthState} from "react-firebase-hooks/auth"
+import { auth, provider } from '../firebase';
+import { useHistory } from 'react-router-dom';
+
 function Header() {
 
+    const [user] = useAuthState(auth)
+    const history = useHistory()
+
+    const signIn = (e) => {
+        e.preventDefault()
+        auth.signInWithPopup(provider)
+        .then(() => history.push("/channels"))
+        .catch((error) => alert (error.message))
+    }
 
     return (
         <>
-
             <header className=" flex items-center justify-between py-4 px-6 bg-discord_blue">
                 <a href="">
                     <img src="https://upe.cs.fiu.edu/wp-content/uploads/sites/3/2018/12/Discord-LogoWordmark-White.png" alt="" className="w-32 h-12 object-contain" />
@@ -19,7 +31,7 @@ function Header() {
                 </div>
 
                 <div className="flex space-x-4 items-center">
-                    <button className="bg-white p-2 rounded-full text-xs md:text-sm px-4 focus:outline-none  transition duration-200 ease-in-out whitespace-nowrap font-medium hover:text-discord_blurple ">Login</button>
+                    <button className="bg-white p-2 rounded-full text-xs md:text-sm px-4 focus:outline-none  transition duration-200 ease-in-out whitespace-nowrap font-medium hover:text-discord_blurple" onClick={!user ? signIn : () => history.push("/channels")}> {!user ? "Login" : "Open Discord"}</button>
                <AiOutlineMenu className="text-white cursor-pointer h-9 lg:hidden sm:text-xl"/>
                 </div>
 
@@ -30,3 +42,7 @@ function Header() {
 }
 
 export default Header
+
+
+
+
