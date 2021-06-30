@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .link{
+        @apply hover:text-discord_blurple transition delay-75 cursor-pointer font-semibold 
+        
+    }
+}
