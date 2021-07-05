@@ -7,4 +7,18 @@
         @apply hover:text-discord_blurple transition delay-75 cursor-pointer font-semibold 
         
     }
+
+
+    .server-default{
+        @apply h-12 bg-discord_serverBG rounded-full flex justify-center items-center cursor-pointer  transition-all duration-100 ease-out
+
+    }
+
+    .icondiv{
+        @apply hover:bg-discord_channelHoverBG p-2 rounded-md
+    }
+
+    .icon{
+        @apply h-6 text-discord_userID cursor-pointer hover:text-discord_userIconHover
+    }
 }
