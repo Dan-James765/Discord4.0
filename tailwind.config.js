@@ -20,6 +20,10 @@ module.exports = {
         discord_userID: "#b9bbbe",
         discord_userSectionBg: "#292b2f",
         discord_userIconHover: "#dcddde",
+        discord_chatBg: "#36393f",
+        discord_chatHeaderIcon: "#72767d",
+        discord_chatHeaderInputBG: "#202225",
+        discord_chatInputBG: "#40444b",
         
 
       },

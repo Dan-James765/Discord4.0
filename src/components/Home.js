@@ -8,6 +8,7 @@ import { useCollection } from 'react-firebase-hooks/firestore'
 import { BsFillMicFill } from 'react-icons/bs';
 import { AiTwotonePhone } from 'react-icons/ai';
 import { FaCog } from 'react-icons/fa';
+import Chat from "./Chat";
 
 
 
@@ -92,6 +93,11 @@ function Home() {
 
             </div>
             </div>
+            <div  className="bg-discord_chatBg flex-grow ">
+                <Chat/> 
+
+            </div>
+
         </div>
             
         </>
