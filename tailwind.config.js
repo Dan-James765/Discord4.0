@@ -27,6 +27,7 @@ module.exports = {
         discord_chatInputText: "#dcdde",
         discord_messageBG: "#32353b",
         discord_message: "#72767d",
+        discord_deleteiconBg: "#ed4245",
         
 
       },

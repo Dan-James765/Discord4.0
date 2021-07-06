@@ -1,6 +1,6 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BiGift, BiHash, BiQuestionMark, BiSearch, BiSmile, BiUser } from "react-icons/bi";
-import { BsBell, BsChatDots, BsFillGiftFill, BsInbox, BsPlusCircleFill } from "react-icons/bs";
+import { BsBell, BsChatDots, BsInbox, BsPlusCircleFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { selectChannelId, selectChannelName } from "../features/counter/channelSlice";
 import { auth, db } from "../firebase";
