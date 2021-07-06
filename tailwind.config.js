@@ -24,10 +24,15 @@ module.exports = {
         discord_chatHeaderIcon: "#72767d",
         discord_chatHeaderInputBG: "#202225",
         discord_chatInputBG: "#40444b",
+        discord_chatInputText: "#dcdde",
+        discord_messageBG: "#32353b",
+        discord_message: "#72767d",
         
 
       },
       height: {
+
+        
         "83vh": "83vh",
         
        },

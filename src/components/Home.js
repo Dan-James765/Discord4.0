@@ -43,8 +43,8 @@ function Home() {
                 </div>
                 <hr className="border-gray-400 border-1 w-8 mx-auto" />
                 <ServerIcon image="https://forums2.cubiccastles.com/uploads/editor/y7/3d73bziwurfn.png"/> 
-                <ServerIcon image="https://scontent.flhr3-4.fna.fbcdn.net/v/t1.6435-9/54256140_10220194386076254_9036174014652874752_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=feFNpZZjyXUAX-nfuKy&_nc_ht=scontent.flhr3-4.fna&oh=079df7b23cdefda000e718eb067aef0b&oe=60E2ED85"/> 
-                <ServerIcon image="https://scontent.flhr3-3.fna.fbcdn.net/v/t1.6435-9/198516518_10218960170982832_6052204744790778098_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=EIPib4_K5zcAX-XpgMJ&_nc_ht=scontent.flhr3-3.fna&oh=893584aa3d569408254a15d2b4ae4df5&oe=60E2401D"/> 
+                <ServerIcon image="https://scontent.flhr3-3.fna.fbcdn.net/v/t1.6435-9/198516518_10218960170982832_6052204744790778098_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=ObI00VosJ3kAX9ikOnF&_nc_ht=scontent.flhr3-3.fna&oh=903c4add484938fe01a9a9cb79d7c4cc&oe=60E82EDD"/> 
+                <ServerIcon image="https://scontent.flhr3-4.fna.fbcdn.net/v/t1.6435-9/54256140_10220194386076254_9036174014652874752_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7l6DGrEopGQAX-olFrE&_nc_ht=scontent.flhr3-4.fna&oh=032a220f8ade3cbe7ff45e18599dd9e2&oe=60E8DC45"/> 
                 
 
                 <div className="server-default hover:bg-discord_green group">

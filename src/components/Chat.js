@@ -1,17 +1,59 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { BiHash, BiQuestionMark, BiSearch, BiUser } from "react-icons/bi";
-import { BsBell, BsChatDots, BsInbox, BsPlusCircleFill } from "react-icons/bs";
+import { BiGift, BiHash, BiQuestionMark, BiSearch, BiSmile, BiUser } from "react-icons/bi";
+import { BsBell, BsChatDots, BsFillGiftFill, BsInbox, BsPlusCircleFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { selectChannelId, selectChannelName } from "../features/counter/channelSlice";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore"
+import { useRef } from "react";
+import firebase from "firebase"
+import Messages from "./Messages";
 
 function Chat() {
 
     const channelId = useSelector(selectChannelId)
     const channelName = useSelector(selectChannelName)
     const [user] = useAuthState(auth)
-    const [messages] = useCollection()
+    const [messages] = useCollection(
+        channelId && 
+        db
+        .collection("channels")
+        .doc(channelId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+    )
+        
+    const inputRef = useRef("")
+    const chatRef = useRef(null)
+
+    const scrollToBottom = () => {
+        chatRef.current.scrollIntoView({
+            behavior: "smooth", 
+            block: "start", 
+        })
+
+    }
+    
+
+    const sendMessage = (e) => {
+        e.preventDefault()
+
+        if (inputRef.current.value !== ""){
+            db.collection("channels").doc(channelId).collection("messages").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                message: inputRef.current.value,
+                name: user?.displayName,
+                photoURL: user?.photoURL,
+                email: user?.email, 
+
+
+            })
+
+        }
+        inputRef.current.value = ""
+        scrollToBottom()
+
+    }
 
     return (
         <>
@@ -33,12 +75,23 @@ function Chat() {
                 <BiQuestionMark className="icon"/>
             </div>
         </header>
-        <main className="flex-grow overflow-y-scroll scrollbar-hide "></main>
+        <main className="flex-grow overflow-y-scroll scrollbar-hide ">
+            {messages?.docs.map((doc) => {
+                const {message, timestamp, name, photoURL, email} = doc.data()
+
+                return <Messages key={doc.id} id={doc.id} message={message} timestamp={timestamp} name={name} email={email} photoURL={photoURL}/>
+            })}
+            <div ref={chatRef} className="pb-16"/>
+        </main>
             <div className="flex items-center p-2.5 bg-discord_chatInputBG mx-5 mb-7 rounded-lg">
                 <BsPlusCircleFill className="icon mr-4"/>
-                <form >
-                    <input type="text" disabled={!channelId} placeholder={channelId ? `Message #${channelName}` : "Select a channel"}/>
+                <form className="flex-grow  ">
+                    <input type="text" disabled={!channelId} placeholder={channelId ? `Message #${channelName}` : "Select a channel"} className="bg-transparent focus:outline-none text-white w-full placeholder-discord_chatHeaderIcon text-sm" ref={inputRef}/>
+                    <button hidden type="submit" onClick={sendMessage}>Send</button>
+
                 </form>
+                    <BiGift  className="icon mr-2 "/>
+                    <BiSmile className="icon "/>  
             </div>
 
         
